@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f8f6">
+  <meta name="description" content="A simple, temporary way to move files between your devices.">
+  <title>drop. — files, simply.</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/config.js"></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><a class="wordmark" href="/" aria-label="drop home">drop<span>.</span></a><span class="top-note">TEMPORARY FILE SHARING</span></header>
+    <section id="homeView" class="view home-view">
+      <div class="hero-copy"><div class="eyebrow"><span class="live-dot"></span> NO ACCOUNT. NO CLOUD DRIVE.</div><h1>Files, from<br>here to <em>there.</em></h1><p>Move something between devices.<br>That's it.</p></div>
+      <details class="name-settings"><summary>Set your name <span id="namePreview">Personalise</span></summary><div class="name-settings-body"><label for="displayName">DISPLAY NAME</label><input id="displayName" class="name-input" type="text" maxlength="20" autocomplete="nickname" placeholder="Zipster"><div class="hint">Saved in this browser. Leave blank for a drop. name.</div></div></details><div class="home-actions"><button id="createBtn" class="button button-dark">Create session <span aria-hidden="true">↗</span></button><button id="showJoinBtn" class="button button-light">Join session <span aria-hidden="true">→</span></button></div>
+      <div id="joinPanel" class="join-panel hidden"><label for="joinCode">SESSION CODE</label><input id="joinCode" class="code-input" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="6" placeholder="DROP01" aria-describedby="codeHint"><div id="codeHint" class="hint">6 letters or numbers. Not case-sensitive.</div><button id="joinBtn" class="button button-dark" disabled>Join session <span aria-hidden="true">→</span></button></div>
+      <div class="home-foot"><span>Works across networks</span><span>Temporary sessions only</span></div>
+    </section>
+
+    <section id="waitingView" class="view session-view hidden">
+      <button class="back-button" data-home>← <span>Home</span></button>
+      <div class="section-label"><span class="live-dot"></span> SESSION CREATED</div><h2>Your room<br>is ready.</h2><p class="subcopy">On your other device, choose <b>Join session</b> and enter this code.</p>
+      <div class="code-card"><div id="sessionCode" class="big-code">----</div><button id="copyCodeBtn" class="copy-button">Copy code <span>↗</span></button></div>
+      <div class="waiting-status"><span class="spinner"></span><span id="waitingText">Waiting for people to join…</span></div><p id="participantCount" class="participant-count">1 device in this session</p>
+      <div class="session-foot"><span>Expires after 15 minutes</span><button class="button button-danger" data-end>End session <span aria-hidden="true">×</span></button></div>
+    </section>
+
+    <section id="joinWaitingView" class="view session-view hidden">
+      <button class="back-button" data-home>← <span>Home</span></button><div class="section-label"><span class="live-dot"></span> JOINING SESSION</div><h2>Almost<br>there.</h2><p class="subcopy">Connecting you to the other device…</p><div class="waiting-status"><span class="spinner"></span><span id="joinWaitingText">Looking for session…</span></div><div class="session-foot"><span id="joinedCodeLabel"></span><button class="button button-danger" data-end>Cancel <span aria-hidden="true">×</span></button></div>
+    </section>
+
+    <section id="transferView" class="view transfer-view hidden">
+      <div class="transfer-head"><div><div class="section-label"><span class="live-dot"></span> YOUR SESSION</div><h2>You're in.</h2><p class="subcopy">Send a file. Pick up a file. Simple.</p></div><button class="button button-danger end-session-top" data-session-action aria-label="Leave session" title="Leave session">Leave session <span aria-hidden="true">×</span></button></div>
+      <div id="disconnectBanner" class="disconnect-banner" role="status" aria-live="assertive"></div><div id="participantNames" class="participant-names" aria-live="polite"></div><div class="connection-pill"><span class="device-dot"></span><span id="connectionLabel">Waiting for devices</span><span class="secure-label">ENCRYPTED</span></div><p class="network-note">Temporary room. Share the code only with people you trust. Files transfer peer-to-peer when the connection succeeds.</p><div class="active-code-row"><div><span class="active-code-label">SESSION CODE</span><strong id="transferCode">----</strong></div><button id="copyTransferCodeBtn" class="copy-button">Copy code ↗</button></div><p id="participantCountActive" class="participant-count">Share the code to invite more devices.</p>
+      <div id="dropZone" class="drop-zone"><div class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 15.5v3A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5v-3"/></svg></div><h3>Drop files here</h3><p>or <button id="chooseFilesBtn" class="inline-button">choose from your device</button></p><input id="fileInput" type="file" multiple hidden><div class="file-limit">UP TO 50 MB PER FILE</div></div>
+      <div class="transfer-list-head"><span>TRANSFERS</span><span id="transferCount">0 files</span></div><div id="transferList" class="transfer-list"><div id="emptyTransfers" class="empty-transfers">Files you send or receive will appear here.</div></div>
+      <div class="session-foot transfer-session-foot"><span id="sessionExpiry">Temporary session · 15 min max</span><button class="button button-danger" data-session-action>Leave session <span aria-hidden="true">×</span></button></div>
+    </section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <footer class="site-footer"><span>drop. <span class="footer-muted">A little less friction.</span></span><span>Files aren't stored here.</span></footer>
+  </main>
+</body>
+</html>
