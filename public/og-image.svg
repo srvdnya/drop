@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#171a17"/>
+  <circle cx="1030" cy="120" r="190" fill="#26372a" opacity=".7"/>
+  <circle cx="1120" cy="510" r="230" fill="#203025" opacity=".6"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="none" stroke="#3b443b" stroke-width="2"/>
+  <text x="116" y="170" fill="#f0f1e9" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" letter-spacing="-4">drop<tspan fill="#91bd9b">.</tspan></text>
+  <rect x="116" y="220" width="10" height="10" rx="5" fill="#91bd9b"/>
+  <text x="145" y="230" fill="#b4b9ae" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="4">QUICK FILE SHARE</text>
+  <text x="112" y="345" fill="#f0f1e9" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-3">Files, from here</text>
+  <text x="112" y="425" fill="#91bd9b" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-3">to there.</text>
+  <text x="116" y="490" fill="#b4b9ae" font-family="Arial, Helvetica, sans-serif" font-size="25">No account. No cloud drive. Just send.</text>
+  <g transform="translate(965 265)" fill="none" stroke="#91bd9b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 60V15a15 15 0 0 1 15-15h45M135 0h45a15 15 0 0 1 15 15v45M195 135v45a15 15 0 0 1-15 15h-45M60 195H15A15 15 0 0 1 0 180v-45"/>
+    <path d="M40 40h35v35H40zM115 40h28v28M115 115h38v38h-38zM40 115h28v28M160 90v20M90 160h18"/>
+  </g>
+</svg>
