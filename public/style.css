@@ -89,3 +89,7 @@ html{background:var(--bg);scroll-behavior:smooth}body{min-height:100svh;backgrou
 
 /* Keep surfaces crisp; no animated background or blur filters. */
 .active-code-row,.join-panel,.drop-zone{background:var(--surface,#fff)}
+
+
+/* v2.2: compact multi-file actions and batch download controls */
+.file-actions{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:5px;flex:0 0 auto;min-width:76px}.file-action{min-height:30px;padding:6px 9px}.file-secondary-action{background:var(--surface-soft);color:var(--muted);border-color:var(--line)}.file-secondary-action:hover{background:var(--button-soft);color:var(--ink)}.file-actions .hidden{display:none!important}.transfer-list-tools{display:flex;align-items:center;gap:10px}.download-all-button{border:1px solid var(--line);background:var(--green-wash);color:var(--green);border-radius:6px;padding:7px 10px;font:600 11px var(--sans);cursor:pointer;white-space:nowrap}.download-all-button:hover:not(:disabled){border-color:var(--green);background:var(--green);color:#fff}.download-all-button:disabled{opacity:.6;cursor:wait}.photo-pick-button{margin-left:0}@media(max-width:520px){.file-row{gap:8px}.file-actions{min-width:68px}.file-action{padding:6px 7px;font-size:10px}.transfer-list-tools{gap:7px}.download-all-button{padding:7px 8px;font-size:10px}}
