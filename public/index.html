@@ -11,16 +11,16 @@
   <link rel="canonical" href="https://drop-snowy.vercel.app/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="drop.">
-  <meta property="og:title" content="drop. — Quick, private file sharing">
+  <meta property="og:title" content="Drop: Quick, private file sharing">
   <meta property="og:description" content="Move files between your phone, laptop and computer. Join with a code or scan a QR. No account. No cloud drive.">
   <meta property="og:url" content="https://drop-snowy.vercel.app/">
   <meta property="og:image" content="https://drop-snowy.vercel.app/og-image.svg">
   <meta property="og:image:alt" content="drop. — Files, from here to there. Quick file sharing between devices.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="drop. — Quick, private file sharing">
+  <meta name="twitter:title" content="Drop: Quick, private file sharing">
   <meta name="twitter:description" content="Move files between your phone, laptop and computer. Join with a code or scan a QR. No account. No cloud drive.">
   <meta name="twitter:image" content="https://drop-snowy.vercel.app/og-image.svg">
-  <title>drop. — Free Quick File Sharing Between Devices</title>
+  <title>Drop: Free Quick File Sharing Between Devices</title>
   <script>
   (() => {
     let saved = null;
@@ -64,7 +64,7 @@
       <div class="transfer-list-head"><span>TRANSFERS</span><div class="transfer-list-tools"><button id="downloadAllBtn" class="download-all-button hidden" type="button" disabled>Download all</button><span id="transferCount">0 files</span></div></div><div id="transferList" class="transfer-list"><div id="emptyTransfers" class="empty-transfers">Files you send or receive will appear here.</div></div>
       <div class="session-foot transfer-session-foot"><span>Room stays open while participants are connected</span><button class="button button-danger" data-session-action>Leave session</button></div>
     </section>
-    <div id="scanQrModal" class="qr-modal-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="scanQrTitle"><div class="qr-modal-dialog scanner-dialog"><div class="qr-modal-header"><div><div class="section-label">QUICK JOIN</div><h3 id="scanQrTitle">Scan a room QR</h3></div><button id="closeScanQrBtn" class="media-preview-close" type="button" aria-label="Close scanner">Close</button></div><div class="scanner-body"><div class="scanner-frame"><video id="scanQrVideo" autoplay muted playsinline></video><div class="scanner-target" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div id="scanQrStatus" class="scanner-status">Starting camera…</div></div><p class="scanner-desktop-wink">Caught you looking 👀 For an easier join, scan the room QR with your phone’s rear camera — or hold the QR in front of this camera.</p><p>Point your camera at a drop. room QR code. It will join automatically when detected.</p><button id="scanQrRetryBtn" class="button button-light scanner-retry hidden" type="button">Try camera again</button></div></div></div>
+    <div id="scanQrModal" class="qr-modal-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="scanQrTitle"><div class="qr-modal-dialog scanner-dialog"><div class="qr-modal-header"><div><div class="section-label">QUICK JOIN</div><h3 id="scanQrTitle">Scan a room QR</h3></div><button id="closeScanQrBtn" class="media-preview-close" type="button" aria-label="Close scanner">Close</button></div><div class="scanner-body"><div class="scanner-frame"><video id="scanQrVideo" autoplay muted playsinline></video><div class="scanner-target" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div id="scanQrStatus" class="scanner-status">Starting camera…</div></div><p id="scannerDesktopWink" class="scanner-desktop-wink" aria-live="polite"></p><p>Point your camera at a drop. room QR code. It will join automatically when detected.</p><button id="scanQrRetryBtn" class="button button-light scanner-retry hidden" type="button">Try camera again</button></div></div></div>
     <div id="qrModal" class="qr-modal-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="qrModalTitle"><div class="qr-modal-dialog"><div class="qr-modal-header"><div><div class="section-label">QUICK JOIN</div><h3 id="qrModalTitle">Scan to join</h3></div><button id="closeQrModal" class="media-preview-close" type="button" aria-label="Close QR code">Close</button></div><div class="qr-modal-body"><div id="qrCodeImage" class="qr-code-image" aria-label="Room invite QR code"></div><p>Open your phone camera and scan this code. Your phone will open drop. and join this room automatically.</p><div id="qrRoomCode" class="qr-room-code"></div><button id="copyQrLinkBtn" class="button button-light" type="button">Copy invite link</button></div></div></div>
     <div id="mediaPreview" class="media-preview-overlay hidden" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mediaPreviewTitle"><div class="media-preview-dialog"><div class="media-preview-header"><div id="mediaPreviewTitle" class="media-preview-title">Preview</div><button id="closeMediaPreview" class="media-preview-close" type="button" aria-label="Close preview">Close</button></div><div id="mediaPreviewStage" class="media-preview-stage"></div></div></div>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
