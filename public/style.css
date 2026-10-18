@@ -118,6 +118,10 @@ html{background:var(--bg);scroll-behavior:smooth}body{min-height:100svh;backgrou
 @media(max-width:370px){.home-actions>.button-scan{gap:5px;padding:0 7px;font-size:11px}.home-actions>.button-scan svg{width:14px;height:14px}}
 
 
-/* Scanner wink is a desktop-only Easter egg; mobile already defaults to the rear camera. */
-.scanner-desktop-wink{display:none!important}
-@media(min-width:700px) and (hover:hover) and (pointer:fine){.scanner-desktop-wink{display:block!important;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface-soft);color:var(--muted);font-size:12px;line-height:1.55;text-align:center}.scanner-desktop-wink::first-letter{color:var(--green)}}
+/* A small, delayed desktop-only scanner Easter egg. */
+.scanner-desktop-wink{display:none!important;margin:0 auto 12px;max-width:350px;padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface-soft);color:var(--muted);font-size:10px;line-height:1.45;text-align:center;opacity:0}
+.scanner-desktop-wink.wink-visible{animation:wink-pop .28s ease-out both,wink-pulse 2.8s ease-in-out .3s infinite}
+@keyframes wink-pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wink-pulse{0%,100%{border-color:var(--line);box-shadow:0 0 0 0 #4c805e00}50%{border-color:var(--green);box-shadow:0 0 0 2px #4c805e18}}
+@media(min-width:700px) and (hover:hover) and (pointer:fine){.scanner-desktop-wink.wink-visible{display:block!important}}
+@media(prefers-reduced-motion:reduce){.scanner-desktop-wink.wink-visible{animation:none;opacity:1}}
