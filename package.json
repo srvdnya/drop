@@ -1,0 +1,17 @@
+{
+  "name": "drop-temporary-file-transfer",
+  "version": "0.8.5",
+  "private": true,
+  "description": "Minimal browser-to-browser file transfer with configurable TURN relay",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

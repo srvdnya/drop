@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: drop-file-transfer
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
