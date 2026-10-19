@@ -133,3 +133,21 @@ html{background:var(--bg);scroll-behavior:smooth}body{min-height:100svh;backgrou
 
 /* Restore the original name editor card and its plus/minus affordance. */
 .name-settings{margin-top:22px;max-width:420px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.45)}.name-settings summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-size:12px;color:var(--muted)}.name-settings summary::-webkit-details-marker{display:none}.name-settings summary::after{content:'+';font-size:17px;color:var(--ink)}.name-settings[open] summary::after{content:'−'}.name-settings summary span{margin-left:auto;color:var(--ink);font-size:11px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.name-settings-body{padding:0 14px 14px}.name-settings-body label{display:block;font:10px var(--mono);letter-spacing:1px;color:var(--muted);margin-bottom:9px}.name-settings-body .hint{margin-bottom:0}:root[data-theme="dark"] .name-settings{background:var(--surface);border-color:var(--line)}:root[data-theme="dark"] .name-settings summary::after{color:var(--ink)}
+
+/* Balanced home controls and a lightweight, ambient backdrop. */
+.name-settings,.home-actions{width:100%;max-width:494px}
+.name-settings{align-self:flex-start}
+.home-actions{align-self:flex-start}
+body{isolation:isolate;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 18% 22%,rgba(91,143,105,.105),transparent 36%),radial-gradient(ellipse at 82% 68%,rgba(113,132,103,.075),transparent 34%),radial-gradient(ellipse at 58% 8%,rgba(184,194,158,.045),transparent 30%);background-size:120% 120%;animation:drop-ambient 26s ease-in-out infinite alternate;will-change:background-position}
+:root[data-theme="dark"] body::before{background-image:radial-gradient(ellipse at 18% 22%,rgba(91,143,105,.14),transparent 36%),radial-gradient(ellipse at 82% 68%,rgba(113,132,103,.10),transparent 34%),radial-gradient(ellipse at 58% 8%,rgba(184,194,158,.035),transparent 30%)}
+@keyframes drop-ambient{from{background-position:0% 0%}to{background-position:100% 65%}}
+.button{transition:transform .18s ease,background-color .18s ease,border-color .18s ease,box-shadow .18s ease}
+@media(hover:hover) and (pointer:fine){.button:hover{transform:translateY(-2px)}.button-dark:hover,.button-scan:hover{box-shadow:0 7px 22px rgba(80,119,86,.12)}.name-settings summary:hover{color:var(--ink)}.theme-toggle:hover{transform:translateY(-1px) rotate(-4deg)}.file-row:hover{border-color:var(--border-strong);transform:translateY(-1px)}}
+.button:active{transform:translateY(0) scale(.99)}
+.hero-copy h1{animation:drop-hero-in .55s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy p{animation:drop-hero-in .65s .04s cubic-bezier(.2,.7,.2,1) both}
+.name-settings,.home-actions{animation:drop-hero-in .65s .08s cubic-bezier(.2,.7,.2,1) both}
+@keyframes drop-hero-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){.name-settings,.home-actions{max-width:none;width:100%}body::before{inset:-8%;background-size:140% 140%}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none}.hero-copy h1,.hero-copy p,.name-settings,.home-actions{animation:none}.button,.file-row,.theme-toggle{transition:none}}
