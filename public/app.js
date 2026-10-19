@@ -14,7 +14,7 @@
   function loadSavedName(){let name='';try{name=localStorage.getItem('drop.displayName')||'';}catch{} if(!name){name=randomAutoName();try{localStorage.setItem('drop.displayName',name);}catch{}} $('displayName').value=name;$('namePreview').textContent=name||'Auto name';}
   function saveName(){const name=getRequestedName();try{if(name)localStorage.setItem('drop.displayName',name);else localStorage.setItem('drop.displayName',randomAutoName());}catch{} $('namePreview').textContent=name||'Auto name';}
   function persistAssignedName(name){if(name){$('namePreview').textContent=name;/* Keep the user's requested name separate from the server-assigned duplicate-name label. */}}
-  function showView(id){views.forEach(v=>{const active=v===id;v.classList.toggle('hidden',!active);if(active){v.classList.remove('view-enter');requestAnimationFrame(()=>{if(!v.classList.contains('hidden'))v.classList.add('view-enter');});}else v.classList.remove('view-enter');});}
+  function showView(id){views.forEach(viewId=>{const view=$(viewId),active=viewId===id;view.classList.toggle('hidden',!active);if(active){view.classList.remove('view-enter');requestAnimationFrame(()=>{if(!view.classList.contains('hidden'))view.classList.add('view-enter');});}else view.classList.remove('view-enter');});}
   const LAST_ROOM_TTL_MS=15*60*1000;
   function getLastRoom(){try{const code=(localStorage.getItem('drop.lastRoomCode')||'').toUpperCase();const savedAt=Number(localStorage.getItem('drop.lastRoomSavedAt')||0);if(!code||!savedAt||Date.now()-savedAt>LAST_ROOM_TTL_MS){localStorage.removeItem('drop.lastRoomCode');localStorage.removeItem('drop.lastRoomEligible');localStorage.removeItem('drop.lastRoomSavedAt');return '';}return code;}catch{return '';}}
   function saveLastRoom(code){try{localStorage.setItem('drop.lastRoomCode',code);localStorage.setItem('drop.lastRoomEligible','1');localStorage.setItem('drop.lastRoomSavedAt',String(Date.now()));}catch{} updateResumeCard();}
@@ -155,7 +155,7 @@
     document.documentElement.dataset.theme=chosen;
     const toggle=$('themeToggle'),icon=$('themeIcon');
     if(toggle){toggle.setAttribute('aria-label',chosen==='dark'?'Switch to light mode':'Switch to dark mode');toggle.setAttribute('title',chosen==='dark'?'Switch to light mode':'Switch to dark mode');}
-    if(icon){icon.querySelectorAll('[data-theme-icon]').forEach(node=>node.hidden=node.getAttribute('data-theme-icon')!==(chosen==='dark'?'light':'dark'));}
+    if(icon){icon.querySelectorAll('[data-theme-icon]').forEach(node=>{const active=node.getAttribute('data-theme-icon')===(chosen==='dark'?'light':'dark');node.hidden=!active;node.style.display=active?'block':'none';});}
     const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute('content',chosen==='dark'?'#171916':'#f8f8f6');
     if(persist)try{localStorage.setItem('drop.theme',chosen);}catch{}
   }
