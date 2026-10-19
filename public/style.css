@@ -192,3 +192,12 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 .site-footer{width:100%;justify-content:space-between;gap:16px}
 @media(max-width:640px){.home-foot{margin-top:34px;padding:24px 0 18px;flex-direction:row;align-items:center;gap:14px}.site-footer{height:54px;gap:14px}}
 @media(max-width:370px){.home-foot{flex-direction:column;align-items:flex-start;gap:5px}}
+
+
+/* Final footer balance pass: keep the benefit row close to the actions, not pushed down by viewport height. */
+.home-view{display:flex;flex-direction:column;align-items:stretch}
+.home-view>.home-foot{flex:0 0 auto;margin-top:30px!important;padding:18px 0 16px!important;min-height:0;border-bottom:0}
+.site-footer{flex:0 0 auto;height:54px;min-height:54px}
+@media(min-width:641px){.home-view>.home-foot{margin-top:38px!important;padding:18px 0 16px!important}}
+@media(max-width:640px){.home-view>.home-foot{margin-top:24px!important;padding:16px 0 14px!important;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}.home-view>.home-foot span{max-width:48%;line-height:1.4}.site-footer{height:50px;min-height:50px;font-size:10px}}
+@media(max-width:370px){.home-view>.home-foot{flex-direction:column;align-items:flex-start;gap:5px}.home-view>.home-foot span{max-width:100%}}
