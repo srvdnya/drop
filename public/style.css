@@ -211,6 +211,10 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 }
 
 
+
+/* Keep home panels aligned to the same width as the primary actions on desktop and mobile. */
+.resume-card,.join-panel{width:100%;max-width:494px;box-sizing:border-box}
+
 /* Mobile rhythm + consistent rejoin width. Keep the home footer attached to content rather than stretching to the viewport. */
 .resume-card{width:100%;max-width:460px;box-sizing:border-box}
 @media(max-width:640px){
