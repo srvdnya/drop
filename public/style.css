@@ -185,3 +185,10 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 .view-enter .home-actions,.view-enter .resume-card,.view-enter .code-card,.view-enter .drop-zone{animation:drop-content-enter .32s cubic-bezier(.2,.7,.2,1) both;animation-delay:35ms}
 @keyframes drop-content-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.view-enter,.view-enter .hero-copy,.view-enter .transfer-head,.view-enter .session-view> :not(.hidden),.view-enter .home-actions,.view-enter .resume-card,.view-enter .code-card,.view-enter .drop-zone{animation:none!important}}
+
+
+/* Footer rhythm: keep the benefit row aligned with the shell and avoid a stretched gap on phones. */
+.home-foot{width:100%;max-width:none;margin-top:44px;padding:30px 0 20px;justify-content:space-between;align-items:center;gap:16px}
+.site-footer{width:100%;justify-content:space-between;gap:16px}
+@media(max-width:640px){.home-foot{margin-top:34px;padding:24px 0 18px;flex-direction:row;align-items:center;gap:14px}.site-footer{height:54px;gap:14px}}
+@media(max-width:370px){.home-foot{flex-direction:column;align-items:flex-start;gap:5px}}
