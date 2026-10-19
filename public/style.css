@@ -209,3 +209,19 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
   .home-view>.home-foot{margin-top:24px!important;padding:16px 0 14px!important}
   .site-footer{margin-top:0;height:50px;min-height:50px}
 }
+
+
+/* Mobile rhythm + consistent rejoin width. Keep the home footer attached to content rather than stretching to the viewport. */
+.resume-card{width:100%;max-width:460px;box-sizing:border-box}
+@media(max-width:640px){
+  .shell:has(#homeView:not(.hidden)){min-height:0}
+  .home-view{flex:0 0 auto!important;min-height:0;padding-bottom:12px}
+  .home-view>.home-foot{margin-top:28px!important;padding:0 0 18px!important;gap:12px;align-items:center}
+  .home-view>.home-foot span{max-width:48%;line-height:1.45}
+  .site-footer{height:48px;min-height:48px;margin-top:0;padding:0;flex-shrink:0}
+  .home-view+.site-footer{margin-top:0}
+}
+@media(max-width:370px){.home-view>.home-foot{flex-direction:row;align-items:center}.home-view>.home-foot span{max-width:48%}}
+/* A compact, visible upload shortcut beside the room-sharing controls. */
+.quick-upload-button{white-space:nowrap}
+@media(max-width:640px){.active-code-row{gap:12px}.code-actions{flex-wrap:wrap}.quick-upload-button{flex:1}}
