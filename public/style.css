@@ -151,3 +151,22 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 @keyframes drop-hero-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:640px){.name-settings,.home-actions{max-width:none;width:100%}body::before{inset:-8%;background-size:140% 140%}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none}.hero-copy h1,.hero-copy p,.name-settings,.home-actions{animation:none}.button,.file-row,.theme-toggle{transition:none}}
+
+/* Theme toggle: make the active sun/moon icon swap cleanly on every tap. */
+.theme-toggle svg[hidden]{display:none!important}
+.theme-toggle #themeIcon{display:grid;place-items:center}
+.theme-toggle svg{transform-origin:center;animation:theme-symbol-in .22s cubic-bezier(.2,.75,.25,1) both}
+@keyframes theme-symbol-in{from{opacity:0;transform:rotate(-35deg) scale(.72)}to{opacity:1;transform:rotate(0) scale(1)}}
+.theme-toggle{border-radius:11px;width:40px;height:40px;background:var(--surface);border-color:var(--line);color:var(--green);box-shadow:0 2px 8px rgba(20,30,20,.045)}
+.theme-toggle:hover{background:var(--surface-soft);border-color:var(--border-strong);color:var(--green);box-shadow:0 3px 12px rgba(20,30,20,.07)}
+:root[data-theme="dark"] .theme-toggle{background:var(--surface-soft);border-color:var(--border-strong);color:var(--green)}
+@media(max-width:520px){.theme-toggle{width:35px;height:35px;border-radius:10px}}
+/* Bring the light theme up to the same visual depth as dark mode. */
+:root:not([data-theme="dark"]) body::before{background-image:radial-gradient(ellipse at 16% 18%,rgba(109,157,116,.16),transparent 37%),radial-gradient(ellipse at 83% 61%,rgba(197,180,124,.14),transparent 34%),radial-gradient(ellipse at 57% 4%,rgba(157,185,204,.12),transparent 32%);background-size:125% 125%}
+:root:not([data-theme="dark"]) .home-view::after{content:"";position:absolute;pointer-events:none;z-index:-1;inset:70px -11vw auto;max-width:100vw;height:420px;background:radial-gradient(ellipse at 35% 45%,rgba(112,160,117,.075),transparent 60%);filter:blur(12px)}
+.home-view{position:relative}
+:root:not([data-theme="dark"]) .topbar{border-image:linear-gradient(90deg,var(--line),rgba(104,148,107,.38),var(--line)) 1}
+/* Short screen transitions: a little feedback without delaying navigation. */
+.view-enter{animation:drop-view-enter .2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes drop-view-enter{from{opacity:.82;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.theme-toggle svg,.view-enter{animation:none}}
