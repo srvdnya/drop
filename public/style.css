@@ -201,3 +201,11 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 @media(min-width:641px){.home-view>.home-foot{margin-top:38px!important;padding:18px 0 16px!important}}
 @media(max-width:640px){.home-view>.home-foot{margin-top:24px!important;padding:16px 0 14px!important;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}.home-view>.home-foot span{max-width:48%;line-height:1.4}.site-footer{height:50px;min-height:50px;font-size:10px}}
 @media(max-width:370px){.home-view>.home-foot{flex-direction:column;align-items:flex-start;gap:5px}.home-view>.home-foot span{max-width:100%}}
+
+
+/* Mobile home: let the content determine its height so the footer cannot be pushed to the bottom of a tall viewport. */
+@media(max-width:640px){
+  .home-view{flex:0 0 auto!important;min-height:0}
+  .home-view>.home-foot{margin-top:24px!important;padding:16px 0 14px!important}
+  .site-footer{margin-top:0;height:50px;min-height:50px}
+}
