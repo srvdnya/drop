@@ -26,6 +26,9 @@
   function setCodeInput(value){$('joinCode').value=value.replace(/[^A-Za-z0-9]/g,'').slice(0,6).toUpperCase();$('joinBtn').disabled=$('joinCode').value.length!==6;}
   function signalingBase(){const configured=window.DROP_CONFIG&&window.DROP_CONFIG.signalingUrl;return (typeof configured==='string'&&configured.trim()?configured.trim():`${location.protocol==='https:'?'https:':'http:'}//${location.host}`).replace(/\/$/,'');}
   function wsUrl(){const base=signalingBase();return base.replace(/^https:/,'wss:').replace(/^http:/,'ws:');}
+  // Wake a sleeping backend before the user asks to create or join a room.
+  // This request is deliberately non-blocking; room creation still uses the WebSocket.
+  function warmBackend(){try{fetch(`${signalingBase()}/health`,{method:'GET',cache:'no-store',keepalive:true}).catch(()=>{});}catch{}}
   async function connectSocket(){if(state.ws&&state.ws.readyState===WebSocket.OPEN)return state.ws;const delays=[0,800,1800,3500];for(let attempt=0;attempt<delays.length;attempt++){if(delays[attempt])await new Promise(r=>setTimeout(r,delays[attempt]));try{const ws=await new Promise((resolve,reject)=>{const socket=new WebSocket(wsUrl());state.ws=socket;let settled=false;const timeout=setTimeout(()=>{if(settled)return;settled=true;try{socket.close();}catch{}reject(new Error('The session server is taking longer than usual to wake up. Retrying…'));},12000);socket.addEventListener('open',()=>{if(settled)return;settled=true;clearTimeout(timeout);socket.addEventListener('message',onSocketMessage);socket.addEventListener('close',()=>{if(state.ws!==socket)return;if(state.code&&!state.closedByUser){const previous=state.code;if(state.sharedRoom){saveLastRoom(previous);toast('Connection lost. You can try rejoining the same room.');}else{clearLastRoom();toast('Connection lost. This room had no other participants yet.');}resetSession('Connection lost. Rejoin if the room is still active.');}},{once:true});resolve(socket);},{once:true});socket.addEventListener('error',()=>{if(settled)return;settled=true;clearTimeout(timeout);try{socket.close();}catch{}reject(new Error('Could not reach the session server. Retrying…'));},{once:true});});return ws;}catch(error){if(attempt===delays.length-1)throw new Error('Could not reach the session server after several attempts. Please try again in a moment.');}}}
   function signal(payload){if(state.ws&&state.ws.readyState===WebSocket.OPEN)state.ws.send(JSON.stringify(payload));}
   function getRequestedName(){return $('displayName').value.trim().replace(/[<>\u0000-\u001f]/g,'').slice(0,20);}
@@ -162,6 +165,7 @@
   $('closeMediaPreview').addEventListener('click',closeMediaPreview);$('mediaPreview').addEventListener('click',e=>{if(e.target===$('mediaPreview'))closeMediaPreview();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('mediaPreview').classList.contains('hidden'))closeMediaPreview();});
   $('themeToggle').addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
   applyTheme(document.documentElement.dataset.theme||'light',false);
+  warmBackend();
   loadSavedName();updateSessionActionButtons();updateResumeCard();applyInviteLink();
   // Hiding the tab or switching apps is not leaving the room. Keep the signalling
   // socket and peer connections alive; only the explicit Leave/End controls leave.
