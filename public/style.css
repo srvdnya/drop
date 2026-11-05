@@ -229,3 +229,5 @@ body::before{content:"";position:fixed;inset:-18%;z-index:-1;pointer-events:none
 /* A compact, visible upload shortcut beside the room-sharing controls. */
 .quick-upload-button{white-space:nowrap}
 @media(max-width:640px){.active-code-row{gap:12px}.code-actions{flex-wrap:wrap}.quick-upload-button{flex:1}}
+
+.name-input-row{display:flex;gap:8px;align-items:stretch}.name-input-row .name-input{min-width:0;flex:1}.name-randomize{flex:0 0 auto;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--ink);padding:0 12px;font:600 12px var(--sans);cursor:pointer}.name-randomize:hover{border-color:var(--green)}
